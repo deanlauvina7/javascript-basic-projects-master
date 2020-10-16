@@ -1,5 +1,4 @@
-const menu = [
-  {
+const menu = [{
     id: 1,
     title: "buttermilk pancakes",
     category: "breakfast",
