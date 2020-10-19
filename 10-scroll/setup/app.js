@@ -43,10 +43,24 @@ window.addEventListener('scroll', () => {
 // ********** smooth scroll ************
 // select links
 
-const scrollLinks = document.querySelector(',scroll-link');
+const scrollLinks = document.querySelectorAll('.scroll-link');
 
 scrollLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
+    // prevent default
     e.preventDefault();
+    // navigate to specific spot 
+    const id = e.currentTarget.getAttribute('href').slice(1);
+    const element = document.getElementById(id);
+    // calculate the heights
+    const navHeight = navBar.getBoundingClientRect().height;
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+    const fixedNav = navBar.classList.contains('fixed-nav');
+    let position = element.offsetTop - navHeight;
+    window.scrollTo({
+      left: 0,
+      top: position,
+    });
+    linksContainer.style.height = 0;
   });
 });
